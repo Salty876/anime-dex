@@ -11,8 +11,16 @@
     import Card from '../components/show-card.svelte'
     import {getTopManga} from '../grabManga'
     import { searchManga } from '../grabManga'
+    import {getMangaCover} from '../grabManga'
+    import {searchV} from '../grabManga'
 
-    const mangaCount = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
+    const mangaCount = []
+    let i = 0
+    while(i<100){
+        mangaCount.push(i)
+
+        i++
+    }
     let promise = getTopManga()
     let searchValue = ''
     let searchedValue
@@ -24,7 +32,7 @@
     function search(){
         searchStatus = true
         searchedValue = searchValue
-        searchPromise = searchManga(searchValue)
+        searchPromise = searchV(searchValue)
         searchValue = ''
     }
 </script>
@@ -42,22 +50,30 @@
 </div>
 <div class="Main-container">
 {#if searchStatus == false}
+    <a href="/manga">hiii</a>
     <h2>Popular Manga</h2>
     <div class="cards">
-        {#each mangaCount as manga}
+        
             {#await promise}
+            
             <p>hollon a quick second friend</p>
-            {:then title} 
-                {#if title.data[manga].title_english != null}
-                
-                <Card title={title.data[manga].title_english} poster = {title.data[manga].images.webp.image_url} mangaLink = {title.data[manga].url}/>
-                {:else}
-                <Card title={title.data[manga].titles[0].title} poster = {title.data[manga].images.webp.image_url} mangaLink = {title.data[manga].url}/>
-                {/if}
+            {:then titles} 
+            {#each titles as title}
+                <!-- {#if title.data[manga].title_english != null} -->
+                {#await getMangaCover(title.id)}
+                    <p></p>
+                {:then cover} 
+                <Card title={title.attributes.title.en}  poster = { cover } mangaLink = {title.id}/>
+                {/await}
+                <!-- {:else} -->
+                <!-- <Card title={title.data[manga].titles[0].title} poster = {title.data[manga].images.webp.image_url} mangaLink = {title.data[manga].url}/>
+                {/if} -->
+                {/each} 
             {:catch error}
-                <p>lil mistake</p>    
+                <p>lil mistake</p>   
+                
             {/await}
-        {/each}
+        
     </div>
 
     {:else}
@@ -66,16 +82,16 @@
     <div class="cards">
         {#await searchPromise}
     <p>hollon a quick second friend</p>
-    {:then title} 
-        {#each title.data as manga}
+    {:then titles} 
+        {#each titles as manga}
           
-            
-                {#if manga.title_english != null}
-                
-                <Card title={manga.title_english} poster = {manga.images.webp.image_url} mangaLink = {manga.url}/>
-                {:else}
-                <Card title={manga.titles[0].title} poster = {manga.images.webp.image_url} mangaLink = {manga.url}/>
-                {/if}
+        {#await getMangaCover(manga.id)}
+        <p>haha</p>
+        {:then image}
+        <Card title={manga.attributes.title.en}   poster ={image} mangaLink = {manga.id}/>
+        {/await}
+           
+              
             
                     
             

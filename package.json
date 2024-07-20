@@ -16,6 +16,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@macfja/svelte-persistent-store": "^2.4.1"
+		"@macfja/svelte-persistent-store": "^2.4.1",
+		"axios": "^1.7.2"
 	}
 }

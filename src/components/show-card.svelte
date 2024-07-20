@@ -8,9 +8,9 @@
 <main> 
 
     <div class="card">
-        <a href='{mangaLink}'>
+        <a href='/manga/{mangaLink}'>
         
-                <input class='img' type="image" src="{poster}" alt="anime-poster" href='{mangaLink}'/>
+                <input class='img' type="image" src="{poster}" alt="anime-poster" href='/manga/{mangaLink}'/>
         </a>
     
         <p class="anime-title">{title}</p>
