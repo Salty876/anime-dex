@@ -63,7 +63,11 @@
                 {#await getMangaCover(title.id)}
                     <p></p>
                 {:then cover} 
+                    {#if (title.attributes.title.en === undefined)}
+                <Card title='no english name'  poster = { cover } mangaLink = {title.id}/>
+                    {:else}
                 <Card title={title.attributes.title.en}  poster = { cover } mangaLink = {title.id}/>
+                    {/if}
                 {/await}
                 <!-- {:else} -->
                 <!-- <Card title={title.data[manga].titles[0].title} poster = {title.data[manga].images.webp.image_url} mangaLink = {title.data[manga].url}/>

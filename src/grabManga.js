@@ -69,7 +69,19 @@ export async function searchManga(searchTerm) {
     }
             
           
+    export async function getManga(id) {
 
+
+        const apiEndPoint = 'https://api.mangadex.org/manga/' + id
+        
+            const res = await fetch(apiEndPoint)
+             if (!res.ok){
+                throw new Error('HTTP error! status: ${res.status}')
+            }
+            const data = await res.json()
+    
+            return await data.data
+            }
 
 
     import axios from 'axios';
