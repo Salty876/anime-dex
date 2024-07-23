@@ -14,6 +14,9 @@
 
 
  </div> -->
+ <head>
+    <title>MangaMania</title>
+ </head>
 <slot></slot> 
 <style>
    
