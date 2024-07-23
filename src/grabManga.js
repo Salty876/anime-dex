@@ -83,8 +83,22 @@ export async function searchManga(searchTerm) {
             return await data.data
             }
 
+  export async function getChapterList(mangaID, currentPage) {
 
-    import axios from 'axios';
+
+        const apiEndPoint = `https://api.mangadex.org/chapter?offset=${currentPage * 20}&limit=20&manga=${mangaID}&translatedLanguage%5B%5D=en&contentRating%5B%5D=safe&contentRating%5B%5D=suggestive&contentRating%5B%5D=erotica&includeFutureUpdates=1&order%5BcreatedAt%5D=desc&order%5BupdatedAt%5D=desc&order%5BpublishAt%5D=desc&order%5BreadableAt%5D=desc&order%5Bvolume%5D=desc&order%5Bchapter%5D=desc`
+        console.log(apiEndPoint)
+            const res = await fetch(apiEndPoint)
+             if (!res.ok){
+                throw new Error('HTTP error! status: ${res.status}')
+            }
+            const data = await res.json()
+    
+            return await data.data
+            }
+
+
+
 
     // export async function  stuff(title){
         

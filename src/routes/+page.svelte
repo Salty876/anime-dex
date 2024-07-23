@@ -1,7 +1,10 @@
 
 
 
+<head>
+    <script src="https://kit.fontawesome.com/02b66b95da.js" crossorigin="anonymous"></script>
 
+</head>
 
 
 <script>
@@ -38,7 +41,9 @@
 </script>
 
 <div class="top">
-<a href="/" on:click={defaulted}><h1>The <b>super</b> complete manga pokedex</h1></a>
+
+<a href="/" on:click={defaulted}><i class="fa-solid fa-face-dizzy fa-5x"  style="color: #ffffff;"></i><h1>MangaMania</h1></a>
+
 <form on:submit={search}>
     <label for='search-bar'>Search Manga</label>
     <input bind:value={searchValue} type="text" class="search-bar" name="search-bar">
@@ -50,7 +55,7 @@
 </div>
 <div class="Main-container">
 {#if searchStatus == false}
-    <a href="/manga">hiii</a>
+   
     <h2>Popular Manga</h2>
     <div class="cards">
         
@@ -109,7 +114,7 @@
 </div>
 <style>
     h2{
-        color: #dc2626;
+        color: white;
 
 font-family: "Open Sans", sans-serif;
 font-optical-sizing: auto;
@@ -121,11 +126,13 @@ font-variation-settings: "wdth" 100;
     label{
         font-family: "Open Sans", sans-serif;
         color: white;
+
+        font-size: 1em; 
     }
      .top{
         width: 100vw;
         height: 20vh;
-
+        background-color: #502274;
         margin: 0;
         padding: 0;
 
@@ -138,8 +145,8 @@ font-variation-settings: "wdth" 100;
 
 
     h1{
-        color: #dc2626;
-
+        color: white;
+        font-size: 3em; 
         font-family: "Open Sans", sans-serif;
         font-optical-sizing: auto;
         font-weight: 650;
@@ -150,6 +157,10 @@ font-variation-settings: "wdth" 100;
 
     a{
         text-decoration: none;
+
+        display: flex;
+        flex-direction: row;
+        gap: 2vw;
     }
 
     .Main-container{
