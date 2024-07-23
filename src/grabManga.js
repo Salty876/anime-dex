@@ -1,7 +1,7 @@
 export async function getTopManga() {
 
 
-    const apiEndPoint = 'https://api.mangadex.org/manga?limit=100'
+    const apiEndPoint = 'https://corsproxy.io/?https%3A%2F%2Fapi.mangadex.org%2Fmanga%3Flimit%3D100'
     
         const res = await fetch(apiEndPoint)
          if (!res.ok){
