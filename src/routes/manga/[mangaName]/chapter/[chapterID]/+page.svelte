@@ -21,13 +21,13 @@ import { onMount } from "svelte";
     onMount(async() => {
     chapterID = window.location.pathname.split('/')[4]
     mangaID =  window.location.pathname.split('/')[2]
-    const res = await fetch('https://api.mangadex.org/at-home/server/' + chapterID);
+    const res = await fetch('https://corsproxy.io/?https://api.mangadex.org/at-home/server/' + chapterID);
     const data = await res.json()
 
-    const rep = await fetch('https://api.mangadex.org/chapter/' + chapterID);
+    const rep = await fetch('https://corsproxy.io/?https://api.mangadex.org/chapter/' + chapterID);
     const dates = await rep.json()
     
-    const ret = await fetch('https://api.mangadex.org/manga/' + mangaID);
+    const ret = await fetch('https://corsproxy.io/?https://api.mangadex.org/manga/' + mangaID);
     const dat = await ret.json()
 
 

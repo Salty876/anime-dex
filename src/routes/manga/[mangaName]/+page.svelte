@@ -55,7 +55,7 @@ onMount(async() => {
      let i = 0
      
 
-     const ret = await fetch(`https://api.mangadex.org/chapter?&limit=20&manga=${mangaID}&translatedLanguage%5B%5D=en&contentRating%5B%5D=safe&contentRating%5B%5D=suggestive&contentRating%5B%5D=erotica&includeFutureUpdates=1&order%5BcreatedAt%5D=asc&order%5BupdatedAt%5D=asc&order%5BpublishAt%5D=asc&order%5BreadableAt%5D=asc&order%5Bvolume%5D=asc&order%5Bchapter%5D=asc`)
+     const ret = await fetch(`https://corsproxy.io/?https://api.mangadex.org/chapter?&limit=20&manga=${mangaID}&translatedLanguage%5B%5D=en&contentRating%5B%5D=safe&contentRating%5B%5D=suggestive&contentRating%5B%5D=erotica&includeFutureUpdates=1&order%5BcreatedAt%5D=asc&order%5BupdatedAt%5D=asc&order%5BpublishAt%5D=asc&order%5BreadableAt%5D=asc&order%5Bvolume%5D=asc&order%5Bchapter%5D=asc`)
     const dava = await ret.json()
     totalChapters = dava.total
      console.log(totalChapters)
@@ -70,7 +70,7 @@ onMount(async() => {
   
        
      for (const page in chapterPages) {
-        const rep = await fetch(`https://api.mangadex.org/chapter?offset=${page * 20}&limit=20&manga=${mangaID}&translatedLanguage%5B%5D=en&contentRating%5B%5D=safe&contentRating%5B%5D=suggestive&contentRating%5B%5D=erotica&includeFutureUpdates=1&order%5BcreatedAt%5D=asc&order%5BupdatedAt%5D=asc&order%5BpublishAt%5D=asc&order%5BreadableAt%5D=asc&order%5Bvolume%5D=asc&order%5Bchapter%5D=asc`)
+        const rep = await fetch(`https://corsproxy.io/?https://api.mangadex.org/chapter?offset=${page * 20}&limit=20&manga=${mangaID}&translatedLanguage%5B%5D=en&contentRating%5B%5D=safe&contentRating%5B%5D=suggestive&contentRating%5B%5D=erotica&includeFutureUpdates=1&order%5BcreatedAt%5D=asc&order%5BupdatedAt%5D=asc&order%5BpublishAt%5D=asc&order%5BreadableAt%5D=asc&order%5Bvolume%5D=asc&order%5Bchapter%5D=asc`)
         const date = await rep.json()
 
         console.log('done')
