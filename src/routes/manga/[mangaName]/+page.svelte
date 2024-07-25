@@ -39,7 +39,7 @@ let chapters = []
 onMount(async() => {
     mangaID = window.location.pathname.split('/')[2]
 
-    const res = await fetch('https://api.mangadex.org/manga/' + mangaID);
+    const res = await fetch('https://corsproxy.io/?https://api.mangadex.org/manga/' + mangaID);
 
     
 
