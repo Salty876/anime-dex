@@ -28,7 +28,7 @@ export async function getMangaCover(id) {
     const fileName = data.data[0].attributes.fileName + '.256.jpg'
   
 
-    return  `https://uploads.mangadex.org/covers/${id}/${fileName}`
+    return  `https://corsproxy.io/?https://uploads.mangadex.org/covers/${id}/${fileName}`
        
 
 }
