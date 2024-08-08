@@ -2,9 +2,16 @@ export async function getTopManga() {
 
     ;
 
-    const apiEndPoint = 'https://corsproxy.io/?https://api.mangadex.org/manga?limit=100'
+    const apiEndPoint = 'https://api.mangadex.org/manga?limit=100'
     
-        const res = await fetch(apiEndPoint)
+        const res = await fetch(apiEndPoint,{
+            headers: {
+                "User-Agent": "*",
+                "Access-Control-Allow-Origin": "*"
+    
+    
+              }
+        })
          if (!res.ok){
             throw new Error('HTTP error! status: ${res.status}')
         }
@@ -19,7 +26,9 @@ export async function getMangaCover(id) {
     const apiEndPoint = 'https://api.mangadex.org/cover?limit=10&manga%5B%5D=' + id +'&order%5BcreatedAt%5D=asc&order%5BupdatedAt%5D=asc&order%5Bvolume%5D=asc'
     const res = await fetch(apiEndPoint,{
         headers: {
-            "User-Agent": "*"
+            "User-Agent": "*",
+            "Access-Control-Allow-Origin": "*"
+
 
           }
     })
@@ -35,7 +44,7 @@ export async function getMangaCover(id) {
     console.log(`https://corsproxy.io/?https://uploads.mangadex.org/covers/${id}/${fileName}`)
 
 
-    return  `https://corsproxy.io/?https://uploads.mangadex.org/covers/${id}/${fileName}`
+    return  `https://uploads.mangadex.org/covers/${id}/${fileName}`
        
 
 }
@@ -44,10 +53,17 @@ export async function getMangaCover(id) {
 export async function searchV(searchTerm) {
 
 
-    const apiEndPoint = "https://corsproxy.io/?https://api.mangadex.org/manga?title=" + searchTerm + '&limit=50'
+    const apiEndPoint = "https://api.mangadex.org/manga?title=" + searchTerm + '&limit=50'
 
     
-    const res = await fetch(apiEndPoint)
+    const res = await fetch(apiEndPoint,{
+        headers: {
+            "User-Agent": "*",
+            "Access-Control-Allow-Origin": "*"
+
+
+          }
+    })
     if (!res.ok){
         throw new Error('HTTP error! status: ${res.status}')
     }

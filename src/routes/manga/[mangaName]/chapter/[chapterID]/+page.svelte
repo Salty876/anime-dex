@@ -23,7 +23,8 @@ import { onMount } from "svelte";
     mangaID =  window.location.pathname.split('/')[2]
     const res = await fetch('https://api.mangadex.org/at-home/server/' + chapterID, {
         headers: {
-            "User-Agent": "*"
+            "User-Agent": "*",
+          
 
           }
     });
@@ -31,7 +32,9 @@ import { onMount } from "svelte";
 
     const rep = await fetch('https://api.mangadex.org/chapter/' + chapterID, {
         headers: {
-            "User-Agent": "*"
+            "User-Agent": "*",
+            "Access-Control-Allow-Origin": "*"
+
 
           }
     });
@@ -39,7 +42,9 @@ import { onMount } from "svelte";
     
     const ret = await fetch('https://api.mangadex.org/manga/' + mangaID, {
         headers: {
-            "User-Agent": "*"
+            "User-Agent": "*",
+            "Access-Control-Allow-Origin": "*"
+
 
           }
     });
