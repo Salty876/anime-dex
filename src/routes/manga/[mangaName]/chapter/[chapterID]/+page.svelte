@@ -29,10 +29,20 @@ import { onMount } from "svelte";
     });
     const data = await res.json()
 
-    const rep = await fetch('https://corsproxy.io/?https://api.mangadex.org/chapter/' + chapterID);
+    const rep = await fetch('https://api.mangadex.org/chapter/' + chapterID, {
+        headers: {
+            "User-Agent": "*"
+
+          }
+    });
     const dates = await rep.json()
     
-    const ret = await fetch('https://corsproxy.io/?https://api.mangadex.org/manga/' + mangaID);
+    const ret = await fetch('https://api.mangadex.org/manga/' + mangaID, {
+        headers: {
+            "User-Agent": "*"
+
+          }
+    });
     const dat = await ret.json()
 
 
