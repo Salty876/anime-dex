@@ -16,17 +16,24 @@ export async function getTopManga() {
 export async function getMangaCover(id) {
 
 
-    const apiEndPoint = 'https://corsproxy.io/?https://api.mangadex.org/cover?limit=10&manga%5B%5D=' + id +'&order%5BcreatedAt%5D=asc&order%5BupdatedAt%5D=asc&order%5Bvolume%5D=asc'
-    
-    const res = await fetch(apiEndPoint)
+    const apiEndPoint = 'https://api.mangadex.org/cover?limit=10&manga%5B%5D=' + id +'&order%5BcreatedAt%5D=asc&order%5BupdatedAt%5D=asc&order%5Bvolume%5D=asc'
+    const res = await fetch(apiEndPoint,{
+        headers: {
+            "User-Agent": "*"
+
+          }
+    })
     if (!res.ok){
         throw new Error('HTTP error! status: ${res.status}')
     }
 
     const data =  await res.json()
 
+    
     const fileName = data.data[0].attributes.fileName + '.256.jpg'
-  
+
+    console.log(`https://corsproxy.io/?https://uploads.mangadex.org/covers/${id}/${fileName}`)
+
 
     return  `https://corsproxy.io/?https://uploads.mangadex.org/covers/${id}/${fileName}`
        
